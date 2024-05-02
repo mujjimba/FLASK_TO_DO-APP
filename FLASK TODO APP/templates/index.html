@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Todo App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="index.css"> 
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <h1><b><i>WELCOME TO MY TODO APP</i></b></h1>
+        <p><b><i>Todo applications</i></b></p>
+
+        <form class="example" action="/add_task" method="post"> 
+            <input type="text" placeholder="Add a new task" name="task"> 
+            <button type="submit" style="background-color:blue"><i class="search"></i>Create</button>
+        </form>
+
+        <div class="main">
+            <ul id="tasklist">
+                {% for index, task in enumerate(tasks) %}
+                <li>
+                    {{ task }}
+                    <form action="/delete/{{ index }}" method="post" style="display: inline;">
+                        <button type="submit" style="background-color:chocolate">Delete</button>
+                    </form>
+                    <a href="/update/{{ index }}" style="color:chartreuse">Update</a>
+                </li>
+                {% endfor %}
+            </ul>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
